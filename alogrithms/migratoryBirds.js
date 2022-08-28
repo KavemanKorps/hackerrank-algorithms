@@ -1,14 +1,18 @@
+// SUCCESS
 function migratoryBirds(arr) {
   let uniques = {};
-  let currMax = 0;
   let maxys = [];
 
-  arr.map(i => uniques.includes(i) ? "" : uniques.i = 0)
-    .map(i => uniques.i += 1);
+  arr.map(i => Object.values(uniques).includes(i) ? "" : uniques[i] = 0)    // GOOD OBJ
+  arr.map(i => uniques[i] += 1);                        
 
-    const maxValues = Math.max(...Object.values(uniques));
-    for (let pair in uniques) {
-    if (pair === maxValue) maxys.push(pair)
-    }
-    return Math.min(maxys);
+  const maxValue = Math.max(...Object.values(uniques)); // what's this? max VALUE, not key lol
+
+  for (let pair in uniques) {
+    if (uniques[pair] === maxValue) maxys.push(pair)
+  }
+  return Math.min(...maxys.map(a => +a));
 }
+
+console.log(migratoryBirds([1, 2, 2, 3, 3]))    // 2
+console.log(migratoryBirds([1, 1, 2, 2, 3, 3]))
