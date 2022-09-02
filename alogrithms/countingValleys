@@ -1,0 +1,17 @@
+function countingValleys(steps, path) {
+    let valleys = 0;
+    let steppas = path.split("");
+    let seaLevel = 0;
+    for (let i = 0;  i < steppas.length; i++) {
+        if (i > 0 && steppas[i] === "u" && seaLevel === 0) {
+            valleys++;
+        }
+        else if (steppas[i] === "u") {
+            seaLevel++;
+        }
+        else {
+            seaLevel--;
+        }
+    }
+    return valleys
+}
