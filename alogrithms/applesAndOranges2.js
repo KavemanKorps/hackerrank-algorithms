@@ -3,7 +3,6 @@
 // APPLE ALWAYS TO LEFT; ORANGE TO RIGHT.
 
 function countApplesAndOranges(s, t, a, b, apples, oranges) {
-  // Write your code here
   let housePoints = Array.from({ length: t - s + 1 }, (_, i) => s + i)
 
   const targetFruit = (array, f) => array.map(f => tree + f).filter(f => housePoints.includes(f)).length
