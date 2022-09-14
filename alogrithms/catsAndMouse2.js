@@ -1,3 +1,5 @@
+// DONE
+
 function catAndMouse(x, y, z) {
   let cats = {"Cat A": x, "Cat B": y};
   // Object.values(cats).forEach(v =>  v = Math.abs(v - z));
