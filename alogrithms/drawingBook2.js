@@ -16,3 +16,4 @@ function pageCount(n, p) {
 // this should work
 pageCount(5, 3);    // 1, front: [ [ 0, 1 ], [ 2, 3 ], [ 4, 5 ] ]
 pageCount(10, 6);   // 2, back: [ [ 0, 1 ], [ 2, 3 ], [ 4, 5 ], [ 6, 7 ], [ 8, 9 ], [ 10, 11 ] ]
+// FINISH THIS
