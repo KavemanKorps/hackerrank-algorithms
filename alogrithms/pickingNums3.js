@@ -1,13 +1,14 @@
 function pickingNumbers(a) {    
     let arrs = [];
-    let newArr = [...new Set(a)].sort((y, z) => y - z);   // [ 1, 3, 4, 5, 6 ], correct   
-    for (let i in newArr) {
+    let uniqueArr = [...new Set(a)].sort((y, z) => y - z);      // sorted, UNIQUE arr
+    let sortedArr = a.sort((y, z) => y - z);                    // regular sorted arr
+    for (let i in uniqueArr) {
         let nums = [];
-        let arr2 = a.filter(y => y - i <= 1)
-        arrs.push(arr2)
-        newArr = newArr.filter(f => f !== i)
-        // for (let x = 0; x < newArr.length; x++) {
-        //     if (newArr[x] - i <= 1) nums.push(newArr[x]);
+        let arr = sortedArr.filter(y => y - i <= 1)
+        arrs.push(arr)
+        sortedArr = sortedArr.filter(f => f !== i)
+        // for (let x = 0; x < sortedArr.length; x++) {
+        //     if (sortedArr[x] - i <= 1) nums.push(sortedArr[x]);
         // }
         // arrs.push([...nums]);
 
