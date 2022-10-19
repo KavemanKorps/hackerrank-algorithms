@@ -6,3 +6,4 @@ function bonAppetit(bill, k, b) {
     console.log(b - shared);
   }
 }
+// DONE
