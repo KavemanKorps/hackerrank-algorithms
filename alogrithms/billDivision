@@ -1,9 +1,0 @@
-function bonAppetit(bill, k, b) {
-  bill.splice(k, 1);
-  let shared = bill.reduce((a, b) => a + b) / 2;
-  if (shared === b) console.log("Bon Appetit");
-  else {
-    console.log(b - shared);
-  }
-}
-// DONE

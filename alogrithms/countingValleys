@@ -1,9 +1,0 @@
-// SUCCESS
-function countingValleys(steps, path) {     // num, string
-    let valleys = 0;
-    let seaLevel = 0;
-    path.split("").map(a => a === "U" ? seaLevel++ : seaLevel-- 
-    ? a > 0 && path.split("")[a] === "U" && seaLevel === 0 : valleys++)
-
-    return valleys;
-}
