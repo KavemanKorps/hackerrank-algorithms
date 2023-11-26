@@ -9,10 +9,11 @@ function repeatedString(s, n) {
         console.log(count);
     }
 }
-// repeatedString("abcac", 10);   // THIS IS ONE HUNDRED MILLION (100,000,000) abcacabcac.
+// repeatedString("abcac", 10);   
 // repeatedString("aba", 10);     // abaabaabaa, 8 (should be 7)
-// repeatedString("cfimaakj", 554045874191);    // 554,045,874,191
+// repeatedString("cfimaakj", 554045874191);    // 554,045,874,191. Strs can contain max of 9,007,199,254,740,991
 // cfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakjcfimaakj......
+repeatedString("a", 100000000);    // THIS IS ONE HUNDRED MILLION (100,000,000) 
 
 function hola(str) {
     str = str.map(a => a = "$");
