@@ -11,8 +11,8 @@ function taumBday(b, w, bc, wc, z) {
     let cheaper = bc > wc ? wc : bc;        // PRICE 
     let zCost = (cheaper * (b + w)) + (expensiveQuant * z);
 
-    console.log(parseInt(baseCost));
-    console.log(parseInt(zCost));
+    console.log(baseCost);
+    console.log(zCost);
     // console.log(zCost > baseCost ? baseCost : zCost);
 }
 
