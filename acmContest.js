@@ -1,36 +1,37 @@
 // REVELATION: it's not asking that I return the total amount of topics in each string. But rather, the maximun
-// topics a group of team can have. Fucking confusing. 
+// topics a group of team can have. YES, this is correct. I did it wrong. Not my fault, they used shitty examples.
 
 function acmTeam(people) {
     // Write your code here
     let template = Array(people[0].length).fill("0"); 
-    let max = people[0].length;
+    // let max = people[0].length;  BAD
+    let max = 0;
     let goodTeams = 0;
     // get string 1. TWO OUTER LOOPS ARE GOOD.
     for (let i = 0; i < people.length; i++) {
         // get string 2
         for (let y = i + 1; y < people.length; y++) {
             // loop over the strings themselves
-            for (let x = 0; x < max; x++) {
+            for (let x = 0; x < people[i].length; x++) {
                 if (people[i][x] == "1" || people[y][x] == "1") template[x] = "1";
                 if (template.every(elem => elem === "1")) {
-                    // console.log(template);
-                    // template = template.map(elem => elem = "0");
                     goodTeams++;
-                    // template = template.map(elem => elem = "0");
                 }
                 // console.log(template);
-            }
+            }  
             template = template.map(elem => elem = "0");
             //console.log();
         }
+        // gets the number of "1"s in current template array.
+        let quantity = template.reduce((count, element) => count + (element === "1" ? 1 : 0), 0); 
+        quantity > max ? max = quantity : max;
     }
     // console.log([max, goodTeams]);
     console.log("1001101111101011011100101100100110111011111011000100111100111110111101011011011100111001100011111010".length);
 }
 acmTeam(["10101", "11110", "00010"]);                   // [5, 1] (5 possible topics, only 1 team knows all, (1", 2))
-acmTeam(["10101", "11100", "11010", "00101"]);          // [5, 2]
-acmTeam(["11101", "10101", "11001", "10111", "10000", "01110"]);    // [5, 6]. Returns [5, 8] instead.
+// acmTeam(["10101", "11100", "11010", "00101"]);          // [5, 2]
+// acmTeam(["11101", "10101", "11001", "10111", "10000", "01110"]);    // [5, 6]. Returns [5, 8] instead.
 
 // THESE ARE EACH 100 CHARACTERS LONG, SO WHY DOES IT WANT ME TO RETURN 97?
 acmTeam([
