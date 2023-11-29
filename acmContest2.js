@@ -1,32 +1,29 @@
-// I should probably first find the absolute MAXIMUM. 
-// find all the possible combinations of the template. 
-// I should also probably keep track of each combo's quantity in a dictionary.
+// YES, MUST RETURN ARRAY OF TWO INTS
 function acmTeam(topic) {
     // this is easy. Don't overthink.
+    // using a comboQuants array is not efficient.
+
+    // replace this with a INT:
     let comboQuants = []; 
-    let template = Array(topic[0].length).fill("0"); 
-    // first string:
+    // how about making an arr without any repeats?
+    let goodTeams = 0;
     for (let i = 0; i < topic.length; i++) {
-        // second string:
         for (let y = i + 1; y < topic.length; y++) {
-            // loop over the strings themselves
+            let quantity = 0;
+
             for (let x = 0; x < topic[i].length; x++) {
                 if (topic[i][x] == "1" || topic[y][x] == "1") {
-                    template[x] = "1";
+                    quantity++;
                 }
             }  
-            // get quantity of topics known by each team:
-            let quantity = template.reduce((count, element) => count + (element === "1" ? 1 : 0), 0); 
+            // at this point, we have the quantity, a num. such as 5, 4, etc.
             comboQuants.push(quantity);
-            // console.log(template, quantity);
-            template.fill("0");
+            
         }
     }
     let maximus = Math.max(...comboQuants);
-    // console.log(maximus);
-    // vvv this shit is making my code run slow 
-    // console.log([Math.max(...comboQuants), comboQuants.filter(i => i == Math.max(...comboQuants)).length]);
     console.log([maximus, comboQuants.filter(i => i == maximus).length]);
+    // console.log(Math.max(...comboQuants));
 };
 
 acmTeam(["10101", "11110", "00010"]);
@@ -142,10 +139,7 @@ acmTeam([
     "1101011101100100011010001011011111101111010101111101110101111011110111010110001101110011100100000110",
     "0011101111110010001011110000110111111111100000100110010011010110101001100100000100101001110001100001",
     "1110011111110101111011111010111010011111111011010011100001100101011111101110001111111101111101001000"]);
-
     // SHOULD RETURN [97, 5]. (97 possible topics, only 5 are eligible).
-
-
 
     acmTeam([
     '01111111100110101100111111100100010101001101101101111101101100111001111110001001011001110111010010010111110000101011001001100111100011010100101001001110101101101010101101011011001111100001101011010010111111001111111001101010111110011001101101011001010110100101011011111111001110110011110001000110001111000010011100010110110111011100101010011100001011100011111100100100110001001001101110001101111010011001001011000001100010111100100110101101011110111001000110101100100100110000011101001011111101001010',
