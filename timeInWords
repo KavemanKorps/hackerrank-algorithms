@@ -1,0 +1,42 @@
+// YES, both h and m are integers, even if m == 00, this is still an integer. 00 == 0 -> true.
+function timeInWords(h, m) {
+    const bases = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 
+                     8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen", 
+                     14: "fourteen", 15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen", 
+                     19: "nineteen"};
+
+    const special = {15: "quarter", 20: "twenty", 30: "half", 45: "quarter"};
+
+
+    if (m <= 30) {
+        // in this case, we use original "h"
+        // must determine m is single- or double-digit.
+        if (m == 0) {
+            console.log(bases[h], "o' clock");
+        }
+        // handle the 20's
+        else if (m.toString().length > 1 && m.toString()[0] == "2") {
+            let str = m.toString()[1] == "0" ? "20" : special[20] + " " + bases[m.toString()[1]]
+            console.log(str, "minutes past", bases[h]);
+        }
+        else {
+            console.log(bases[m], "minutes past", bases[h]);
+        }
+    }
+
+    // if m is greater than 30:
+    else {
+
+    }
+
+    // before/at 30: "past". Example:   5:28, twenty eight past five
+    //                                  5:30, half past five
+    //                                  5:00, five o' clock
+    // After 30: "to". Example:         5:37, twenty three to six 
+}
+
+timeInWords(5, 7);
+timeInWords(5, 0);
+timeInWords(5, 17);
+timeInWords(5, 26);
+timeInWords(7, 20);

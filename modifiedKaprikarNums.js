@@ -28,6 +28,7 @@ function kaprekarNumbers(p, q) {
     }
     return goods.length ? goods: "INVALID RANGE";
 }
+
 console.log(kaprekarNumbers(1, 100));    // [1, 9, 45, 55, 99]
 console.log(kaprekarNumbers(100, 300));  
 console.log(kaprekarNumbers(0, 0));  
