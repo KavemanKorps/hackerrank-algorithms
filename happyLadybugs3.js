@@ -1,9 +1,11 @@
+// REMEMBER ASSHOLE: WE ARE SUPPOSED TO RETURN EITHER YES OR NO.
 function ladybugs(s) {
     let firsts = [];        // B_R
     let leftovers = [];     // RBR
     for (let i = 0; i < s.length; i++) {
         let curr = s[i];
-        if (!firsts.includes(curr) || curr == "_") {
+        // if (!firsts.includes(curr) || curr == "_") {
+        if (!firsts.includes(curr)) {
             firsts.push(curr);
         } else {
             leftovers.push(curr);
@@ -26,9 +28,10 @@ function ladybugs(s) {
     console.log(firsts);
 }
 
-ladybugs("RBY_YBR");    
+// ladybugs("RBY_YBR");    
 // RRBBYY_
 // firsts: RBY_
 // leftovers: YBR
 
-// ladybugs("B_RRBR");     // -> BBRRR_
+ladybugs("B_RRBR");     // -> BBRRR_
+ladybugs("DD__FQ_QQF"); 
