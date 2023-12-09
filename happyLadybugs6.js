@@ -4,51 +4,48 @@ function happyLadybugs(s) {
     let targetVal;
     let endReached = false;
 
-    for (let i = 0; i < newArr.length; i++) {
-        let curr = newArr[i];
-        // left and right values of curr
-        let left = i == 0 ? false : newArr[i - 1];
-        let right = i == s.length - 1 ? false : newArr[i + 1];
+    while (true) {
+        // console.log(targetInd, targetVal);
+        if (endReached) break;
 
-        console.log(curr);
+        for (let i = 0; i < newArr.length; i++) {
+            let curr = newArr[i];
+            let left = i == 0 ? false : newArr[i - 1];
+            let right = i == s.length - 1 ? false : newArr[i + 1];
 
-        if (curr == "_") continue;
-
-        // Look for isolates...
-        // if a right with qualifications is found, continue.
-        if (!targetInd) {
-            if (right) {
-                if (right == curr) {
-                    i += 2;
-                    continue;
-                };
-
-                // isolate found:
-                if (right == "_") {
+            if (i == newArr.length - 1) endReached = true;
+            if (curr == "_") continue;
+    
+            // Look for isolates...
+            if (!targetInd) {
+                // isolate found:     
+                if (right && right == "_" && left != curr) {
                     targetInd = i + 1;
                     targetVal = curr;
-                    i = 0;
-                    continue;
+                    break;
                 }
-            } 
-            if (left && left == "_") {
-                targetInd = i - 1;
-                targetVal = curr;
-                i = 0;
+                else if (left && left == "_" && right != curr) {
+                    targetInd = i - 1;
+                    targetVal = curr;
+                    break;
+                }
             }
-        }
-
-        // by this point, we are searching for possible matches:
-        else {
-            if (curr == targetVal && i != targetInd - 1) {
-                newArr[i] = "_"
-                newArr[targetInd] = curr;
-                targetInd = undefined;
-                targetVal = undefined;
-                i = 0;
-                continue;
+            // by this point, we are searching for possible matches:
+            else {
+                if (curr == targetVal && i != targetInd - 1) {
+                    newArr[i] = "_";
+                    newArr[targetInd] = curr;
+                    targetInd = undefined;
+                    targetVal = undefined;
+                    break;
+                } 
             }
         }
     }
+    console.log(newArr.join(""));
+
 }
+// happyLadybugs("DD_FQ_QQF"); // length: 9
 happyLadybugs("DFQ_QFD");   // DDQQFF_
+happyLadybugs("YYR_B_BR");  // doesn't work b/c when it reaches R for the first match, it already fucking exits out!
+happyLadybugs("DD__FQ_QQF");    // same with this one!  THAT IS THE CAUSE OF THE PROBLEM
