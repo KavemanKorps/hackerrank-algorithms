@@ -4,8 +4,19 @@ function happyLadybugs(s) {
     let targetVal;
     let endReached = false;
 
+    let noUndies = Array.from(new Set([...newArr.filter(a => a != "_")]));
+    let unis = {}
+
+    for (let i = 0; i < noUndies.length; i++) {
+        unis[noUndies[i]] = false;
+    };
+
+    // console.log(unis);
+    // idea: make dict of all unique letters, initally set them to false.
+
     while (true) {
         // console.log(targetInd, targetVal);
+        if (Object.values(unis).every(a => a === true)) endReached = true;
         if (endReached) break;
 
         for (let i = 0; i < newArr.length; i++) {
@@ -13,7 +24,6 @@ function happyLadybugs(s) {
             let left = i == 0 ? false : newArr[i - 1];
             let right = i == s.length - 1 ? false : newArr[i + 1];
 
-            if (i == newArr.length - 1) endReached = true;
             if (curr == "_") continue;
     
             // Look for isolates...
@@ -41,11 +51,12 @@ function happyLadybugs(s) {
                 } 
             }
         }
+        // console.log(newArr.join(""), unis);
     }
     console.log(newArr.join(""));
-
 }
-// happyLadybugs("DD_FQ_QQF"); // length: 9
-happyLadybugs("DFQ_QFD");   // DDQQFF_
-happyLadybugs("YYR_B_BR");  // doesn't work b/c when it reaches R for the first match, it already fucking exits out!
-happyLadybugs("DD__FQ_QQF");    // same with this one!  THAT IS THE CAUSE OF THE PROBLEM
+// doesn't work b/c when it reaches R for the first match, it already fucking exits out!
+// happyLadybugs("DFQ_QFD");       // DFQ_QFD -> DFQQ_FD -> D_QQFFD -> DDQQFF_
+happyLadybugs("YYR_B_BR");      // YYR_B_BR -> YYRRB_B_ -> YYRRBB__
+happyLadybugs("DD__FQ_QQF");    // DD__FQ_QQF -> DD_FFQ_QQ_ -> DD_FFQQ_Q_ -> DD_FFQQQ__  
+// ---> DD_FFQQQ__. Same with this one!  THAT IS THE CAUSE OF THE PROBLEM
