@@ -4,19 +4,25 @@ function happyLadybugs(s) {
     let targetVal;
     let endReached = false;
 
-    let noUndies = Array.from(new Set([...newArr.filter(a => a != "_")]));
-    let unis = {}
-
-    for (let i = 0; i < noUndies.length; i++) {
-        unis[noUndies[i]] = false;
-    };
-
     // console.log(unis);
     // idea: make dict of all unique letters, initally set them to false.
+    function areGrouped(ar) {
+        let arr = ar.filter(a => a !== "_");
+        for (let i = 0; i < arr.length; i++) {
+            let curr = arr[i];
+            let left = i == 0 ? false : arr[i - 1];
+            let right = i == arr.length - 1 ? false : arr[i + 1];
+    
+            if (curr != "_" && (right && right == curr || left && left == curr)) {
+                continue;
+            }   else return false;
+        }
+        return true;
+    }
 
     while (true) {
         // console.log(targetInd, targetVal);
-        if (Object.values(unis).every(a => a === true)) endReached = true;
+        if (areGrouped(newArr)) endReached = true;
         if (endReached) break;
 
         for (let i = 0; i < newArr.length; i++) {
