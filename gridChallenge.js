@@ -8,15 +8,15 @@ function gridChallenge(grid) {
 
     // loop over each string
     for (let i = 1; i < grid.length; i++) {
+        // make each string alphabetical order:
         let second = alpha(grid[i]);
         let first = alpha(grid[i - 1]);
-        // make each string alphabetical order:
-
-        // compare FIRST letter in SECOND string w/ FIRST letter in FIRST string
-        if (second.charAt(i - 1) < first.charAt(i - 1)) return "NO VERTICAL";
 
         // loop over every individual letter in each string
         for (let x = 1; x < second.length; x++) {
+            // compare FIRST letter in SECOND string w/ FIRST letter in FIRST string
+            if (second.charAt(x - 1) < first.charAt(x - 1)) return "NO";
+
             // compare 2nd letter with first one:
             if (first.charAt(x) < first.charAt(x - 1)) return "NO";
         }
@@ -24,15 +24,320 @@ function gridChallenge(grid) {
     return "YES";
 };
 
-console.log(gridChallenge(["abc", "ade", "efg"]));  // YES
+// FIX THIS:
+console.log(gridChallenge([
+    "rpb", 
+    "hot",
+    "qra"]));   // NO
 
-console.log(gridChallenge(["eabcd", "fghij", "olkmn", "trpqs", "xywuv"]));  // YES
+    // bpr
+    // hot
+    // aqr
 
-console.log(gridChallenge(["abc", "lmp", "qrt"]));  // YES
 
-console.log(gridChallenge(["mpxz", "abcd", "wlmf"])); 
+console.log(gridChallenge(["abc", "ade", "efg"]));  // NO
 
-// a b c
-// a d e
-// e f g
-// ------> YES (ascending order both vertically and horizontally for all rows and columns)
+console.log(gridChallenge([
+    "zzwj",
+    "zjzw",
+    "zwzj",
+    "jzwz"]));      // YES
+
+console.log(gridChallenge([
+    "yxxxx",
+    "xyxxx",
+    "yyyyy",
+    "yyyyy",
+    "yyyyy"])); // 92, YES
+
+console.log(gridChallenge([
+    "wzxzwxzyzzwzyyzwzzxzyxzyzzwwyzzyzjxyxzzzyyzyyyzzzxzzzzyjzyyyzzzxyzzzyzyzwyzyyzzzzzzxyzyyyyxzxxzyxwz",
+    "zzzzzzzzuxxzzzzzzzzzzzxwzzzzzzxxzzzzyyzxxzzzxzzxzzzzzzzzzxzzzzzzzzzwxwzzzzzzxwzzzyxzzzzzzzyzzzzxzxu",
+    "zzzzzzyzzzzzyyzzzzzzzzzyzzzzzyyzzzzzyyzzzzzzyzyzzyzyzzzzzyyzzzyyyyyzyzyzzzzzzzzyzzzzzzzyzzzzzzzyyzz",
+    "zyyyyyzzzzzyzzyyyzyyzzzyzzzzyzzzzzzyzzzzzzyyzzyzyzyzzzzzyzzzzzzyzzzzzzzzzzzzyzzzzzzzzzzzzyzzzzzzzyy",
+    "yzzzzyzyzyzyyzzzzzyzzyzzzzzzzzzzzyzzyzzzzzyzzyzzzzzzyzzyzyzzzzzzzyzzzzyzzzzzzzzzzzzzzzzzzzzyzzyzzzz",
+    "zzzzzzzzzyzzyzzyzzzzyzzyzzzzzzzyyzzzyzyzzzzzzzzyyzzyzzzzzyyzzzzzzzzzzyzzzzyzzzzzyzzzzzzyzzzzzzyzzzz",
+    "zzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzz",
+    "zzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzyzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzyzzzzzzzzzzzzz",
+    "zzzzzzzzyzyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzyzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+    "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"]));
+    // 86, YES
+
+console.log(gridChallenge([
+"ofhxjesfutocclvwnmqmaekssbtqjkewewxvtoxwgfmwbuktmcwvcgvhsilzhudigustbktfido",
+"otzeuxzmktdowwmbcjzcaijiougidzlixnqbioibuetkyfhwfzfpuphlcogxawohpuvrzelsbso",
+"obsjghhywwayzwwflcldkdysmwrynahfufiadqqrughassqjgpcatkywnnpgszhsmiuevduyclp",
+"ihajospflyfhmmxibxmpgiudbtirccomrgzfctgnspnxhxxhldnpvfuloxqvtsydpshtnukyltx",
+"rptuwrvpfyuumxukgznykattwmvgpiznrykhznlisknjkwzlgjjhikemajeejloekxdutuvvufm",
+"rjtiarnpjwafrvprwvzqgzvitndsegusbiwjgsvczyvjdfypittvkxlezdnuwogrmzvsqqlzisr",
+"qsxcgfanadlpkculnqopgzhctawqkrochdgjsgknwzsznhlzpstjcgmwovivrceirjthcicvkpt",
+"frgemvwjlsgndskmulkmsxkrzrgnbnckwbmsfnjtkhrwuvlwuqdniztmrswwqlbkzqcajhdyiqx",
+"taaatvqpuuhummwcswpgldpyhinjnekyapmrxnunusscgboftocsqywztznaogripaaeqwpkskp",
+"mmzphvbplzjknqgjbavlxvekeosxqudkzqgcsgckrgvalpmvcklgbgisykntlmjwesweffsihgh",
+"ltdirnzbqdahxiuwkoxrewhydyssveyqydtniztfjqpbwloeqelurhmtqotfdftrqknoeqspkoh",
+"osqtzljfrvqakjkirxzqtvtbzfdtwcgbgzqswikweewnpruymyktgedcjrjdrymslcjhbbofkry",
+"aptopbyiyorpghkrxbamznrthydlhhfojfuewjtdrbyrhbqyubldfmhxbobxyxblekxzlaavsyc",
+"keafvnkdpukxbrmbqcuevcmncxozxdfrsvchcnfauyangdjfbwtvccvfkozidysbcsnenkugrhp",
+"sbphzkgimltlcnbjmswfwnojlfiihxhqjsgfbxtqwcswcwfptyxzhzoqdeoleaplgteyrwmuhjv",
+"fviuogkrgxfljxjljqkqpyeeumaqebcngayuppacsvhibdqilbqdomsbkizifyaquelvpzstfrr",
+"ndagsniisxrlgzukgoxjzcnyegqbhdfzmsotkbctmboodptioykdoinloecrefjrtrywszsryak",
+"gptsczcsdjqfzytphzamtoikbntjyjyxntrnkueenpszostrfdlzhdzakjrcwvnwckfashyibbl",
+"wsikfscckfsxdaasmervtsydynqmveovdqoncnxgfembiohlnrfakpwkdqyegulrhozxjmvinfr",
+"tiimlbohgswxqjkslsoncaxryruzclisdwpeojujadyxfcdnmtkdrbtuxpsurkxcqhudlmgncue",
+"eyvmussyertfcnyjytbntcqkqhnbjhtwhqhvfzwtnbnjzkiuvwazuepwwjrnrswwhucixbjqixs",
+"ukibgovmpzzphlkjzttmihvcxpdxbskbpkutiyxqlahrqalzgixoaokzjkdgeneymqehhjpmbbx",
+"kcmfkqyusrjhunfnagbltjjmybgbrkdrsjlsgiswqztgbaoadajkgbeywhpszyrjewbvnjlhgvl",
+"jhfiffbwahafeigrgtjdemgyynfdsafnwngfkqxrxnzbdliomlkdcncjvbktggnjtoooiowgyjl",
+"vhaqtaznfzerjvnqjokjypcwacurjkkcekgogpynrkqytuimwghruyiilgmkvhhfhyubiwajgvp",
+"pujzlriefdrcrshiqgbgewcyhrezelltbzbbegsxhhjvewsqiqrohiucrvmfpzzbgzvubsijyry",
+"eoiqdlcspskzmketyahmyyjnlajyyrlzwdylqboreytykbfjmtxddnhgwsjxkgrwfblfadnekoq",
+"nqzgnikghqrofnkahqjiehbfmdynsbflzdglejaefrvewbyofhtgyfqusiwwroxtfevhxfsxwff",
+"pojmbbxgnfdnvohfvdcrnqljqcybnlkrpwmvggcuyoafitfabesjoornslhphsgdqebgwkolpij",
+"aauigpuevplyyoaivytlwuworwwhrxsqjusaocdwrravoqeuwzqlxpdosbcbbwprjyqdxplkuqd",
+"jmwyqyydommvcuybjtzwmydruycnizeafgdgnhfyogeutqqdmhqoxeunstrxjjrhftaayrzraag",
+"ivtbllpjhazzgkdyxzlfnztuwyvqwjnbdsvxqkzsetqngpxemyktqloqqarsynrupdxkjmxyoxk",
+"klqxllyxbwxwsogosawxhwvarxiddiiecvbfrtbkzejxijbhfaotkbzppjvyqdcpscutrmthjml",
+"qawdknsxmnmvusxcywdfubqhzixdkanvzndbgzqvtszezipllxacdtwkhgaycapgryliknvemnr",
+"ovjrctghkyqtfxmricbqlfxhbykeeqeldaklsymgoldbprkcpavriihewrtmticylbrvcxpydgc",
+"elnslcmhoqprlxonztsbcuvgofuhroclkthexruijhqoavmhiemqwbvbsqeewrqvujppvqkzllb",
+"gzirmmezitlqzsznipqfitwyidppspwadhssqtbwxlxpyznqmxgzqpbzttvnjcdatxkjjosqbtq",
+"duitrfggoqyffqssugdkhvfjctkszkvgabnjfbgtqxhuooysoinlwxxnsertyxzqfbskrpwlvxx",
+"doiavfswlgkuryazklkmzzkcaxrcyrkayxzxtvsmywrlolabjezbytnsnmoenhsghyxpslstkpf",
+"xefwuksvlakczuxipbgbklnisvjkwmbltzsisnwptexuhlbkitynfhvpsvtsryqzmmnsbpgkqyl",
+"kujxdkrrrcyobxtsetfnawrqqaoxhopzropqtdlnpnaipcegvbpvykjvzumcbscgfqdirmtackn",
+"cuyvvrkhutkbmwyvnvrujuksuizvimanrustoexgapfnxenrmhspuzllbjalizwqadjhmmvmqnn",
+"rfvswiscdecjseckqbwbrospeitjnegphjtpvzbwzbgbnzrnkygfcblsywamdzhhqfxkvhlhwht",
+"oyfdcrdjbylyornfogqlejiewtbtouubzjhwlcmtpmgtrsgvpywzasrtalqejnwskikzwcweqox",
+"ueigbeugtpqiljscsebaaznagrxdixaxkvtmyuglrqwufayqplwgemmwbisiqsagipoandloxcx",
+"sdvhfygdwetrfwwbhkoxzetnegttpqvyyhtffxqmhvcoytzunmfyizydlnkuvlylnqranwrznjm",
+"lipfvdtwungdmbnhiuhamfrouoatnmzjwbwpxagbvpzetlivrqgnvtshilvsrfymthvbpstyqxm",
+"pzzujdsoambkgptgkibmhtbioiuwhxfcwghxchewlyaymwoattzxbmriduzdzqywjbjpjmuuiug",
+"fmwqhqvwtyvdjgjfvczepoutmbosuusegjzfpotsqxpkzdmhfexhtcxuwlwhxexqylqlpbifnph",
+"docucyyfnbshqytursjuiaazjkeiuaxnyikhqtnyzntnjajtqaitdmcpnvhszpawhcjeqtzrwil",
+"eysdpenvabpjsjpcjjsjkpjzwzjfecqqelqzyumumoikjtmpiddwgrymmcaasfdjhwbofvhgdis",
+"hpojhdfnptyqomsrpsyzpvimkhfgvjswiemhosnvwqnkdqzcvxbpksdxiirpmuupbgeaurdynwf",
+"ejmhtvgocjlsgatcuqtmupxezyscbweyvbbjtfsgeydaazttfriedbqjrpuxpmmhrfxxertfuce",
+"xroavyurrqtevpadttubsxobbeokuzgrgszirmzvpcounyyqwnofrtbwvicoqgncoyowptsdnga",
+"ubcmysurcbwepabreyphnezagrhhtuofpicmgerurrxfiylfwsjuzjrergpsplsriebuypyvyks",
+"pmomhntugxuzwkxssuiganqxfratedhxrnzntrllbhrjluytsivaodiizwyazrikuzenhuepbbr",
+"lolrazeoppirgvfkzqbhnwdsbaulbrwrycqzqrilrvfcigjzlqbrqyftmtikfwxovbwskxhowku",
+"ruvwsvfkueqwdigpypwbdvkkosrptaaxaedaktqdpcvmaquhduijiizhkwbmazqqmcbkswwbvfr",
+"vbevbqnzanzmpumhaimtbsqjidetviebrirhniaflthqaqtbwbiswthebaviibxiqodloucnkqz",
+"wcjncornqcjzguhiswbnpjzcbzyjjdjqlgfzzdaoigdijcxjzxiontbzqsbtfcbhctxctdobcyt",
+"bokoxxmmydofonvtupqasjcoxehvuxgdcwkyyngtxfxebywsbilwlzhfosrlpjllaeudjvhuupc",
+"zwncztkqkricyochkwjdfgwxsmkcosneohapdohexlhaylefekbfrsedfabhzofcfzvrgzveobb",
+"gdxfbvbwvcnrwvkqondfkpivqedsoaudwhdgrlobfuzdoilraibxzmfvjfnmbhrflxrihwzldug",
+"xsriuqfiigusevpkcmeppbftawgijjuwkidqnrspybnlvefjpuaqdamkvqbgkgurmicqlqwqput",
+"pnsdczixqaasvelocztorqozljyjyznuwjmgmcvndwbpdujpqydhfpjrdtnuzagzbiezfeuqydu",
+"oyiepmuyxnwdjqtitjwjmfiifgjraqwyvprzfonexzsxblcxluqcohqqyguptmilhcawtjjgkzf",
+"pgzngebnulcrttclgrpfvhviefupycvgjrhixneuahsthipclcfmlhcvirqhztsowvcnvdurxvg",
+"vtudiuojxcjpaghxlesaxovsnckteikjfbqghseifxsmngxggtyyopwzgwfgfkzgulbccadrjfc",
+"rpyaefmlzwgyclhiscfrxegdnopsrjcnofhyojpbsqjkwbzgfsslitqiwbvhhrcqyjougczjpdi",
+"owrbknttpnpdvzcufoptuugrqzlmrsxrwgsmvzyybudtsehakxnmpqnhlsgfvxkllsythfaekyn",
+"owpvqnneszkbquvmiuvhtqjhqojqsierpwzhhpxmojievlfjopvszlmwxaruhivyvdunachtjhq",
+"anxptmuhhezrlsuwakyiiqiahzqnjlqjjandyasujohzkkmvklhfcucrisekypwphjocnvfyxli",
+"lmvnlzauwqmboupopbkimnkrefokmtmclatjolbnjokcsjbanztfcyugmvxrsnudngirlhrtcur",
+"itafbfrcbgkszoyzzfqzwmkaqojoqztahjeibkvhsgfcbbdlmwzdafxmfexznglcfsizqxzzqil",
+"zjukczhmtbmperlzpttfucjvenwfowvqczafdicmepimedqeywnsxmoxychuhvjlgjbjbxqkkud"]));
+// 10, NO
+
+console.log(gridChallenge([
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"]));
+// YES
+
+console.log(gridChallenge([
+"nsfcvjzzwdpvtljipnmggptugswstelicyfmlbuaxxpmlmmth",
+"zkavsyhtdmzqiaxgtajetjknzaigbotwnaaamzzidzahpqvbo",
+"eakezzdvjxbtyrceyalhfdhmnfihdkzeuyuauogskhnoefkex",
+"ffumlhycosxcufitmeprxeslevkowncvwtkvmmgtelnfnrqjt",
+"bulfbeuqjerkqebvoeaaipqtwrryjyiemewmuiexeroqguxfp",
+"pmrnukxwdspsvgjeopubaxwdqwuqmpdfsvvanxbrtzjjfoawz",
+"vkcgerstrvxfvyjlqkappyvgjmzzooljfjplmdhbcozrxsrsr",
+"cevpiqoymszmfnvbglfxkampkwkpyumnaivjbtpzkubtoglnu",
+"maohxujfekvuajlrcdtcrqxuzxlemarstfjezjnfqqhgndwld",
+"vrhcajagdxfxhypgimccfdgtdaxwggxgaztnmphcwwzwnijos",
+"rfqeukiapatiwyurxckwtqrxijnqexxogctoohigoqnznwmvv",
+"ksbaedjssmhocninvengzveyzdyrnmaofziljwjjqnjqvizkf",
+"pkdkpwsokzgjqzcrdhvphkbjsblpkmxtbekyobpdpjveecwdk",
+"rbczprzdbgfxegcekbnywonmrspyuyfpuvzhlongnxnpbylnu",
+"yneamljxxgthlyotbltfmdusnnsnnipkqesrmytyixrdijtte",
+"vwzoykqzbqnbtasuygvtjcvuljvpskkjaddmwqwxhxushxyjh",
+"rgeoqvatpgwnaiwdbihukxgiizxuatmdnodqspoamayleaozc",
+"ezyrpwlqgioikranwjdgoodwlyufymzfluxejjlcnpiuttsen",
+"pwkxnsdpyclvqwxxzrryxvurnexvpeunplzpidlvflpsxptmg",
+"rxnirnejahfxjgrohtokevqjqdthasdaqsjybdxoqattgoxfm",
+"aqoaszuwjdofsayszqpxdirxqstvyjbtmovjaaxproxvjfggv",
+"vjsesnsqoruguvsvnpfonudctofyimmajmjpqtuzzzviomznc",
+"zqtdwnrpxggbucuasbebshttvbpfdzomwrkpqfbizqkfseviw",
+"uvcmqumrmxgzimbzgcjqwdsmnpnbkzihsoxgmticiwwokuwpa",
+"oljbqtefgdxmulndtdlzzhvgifguelkzqzklltvwcbytubfni",
+"fekkxpjpevdnlibuctkualzwocynlsyxojwqhuqosshejyjxn",
+"dxcqxnhrsnabyjxsntjkgfsnuklbvynxdbebtgdlgdfxdaeak",
+"dcuxbdzooroykgcwbomijmflccutwubdgvdxghwibkplnudnk",
+"ntueoatrofptrvaoqvkoroyxjjcsdfhnzoqivzxbskflgrjky",
+"fugfyoutkptpldkteorulkzxlrfiqpfjotxnurotjadokbpkc",
+"wequxbekswnqpoolrbvekuceruknqfwmgecokdsivrtlcfhlg",
+"apuzeidflnaafpxodczlwphdhlljvaqcltmijskuudmturpxr",
+"upatbkuhcmoazlrbfxpeediobsavykhrkxbxvkhvxdebcfory",
+"ondnsqmlumvqflffxmlzoitywztdhgryfmwxoekbqspfkbtap",
+"ncfdedgsunyiojbcexbgvzbviaiqlzkbubpqfjshzmvtjozks",
+"flycyoukclcfoqqkqeksxyzwjmmlylnokwicowvncvwcakimt",
+"kqdejgltqtrmjseszabsjjgngmxunwvoeukdawctunemxmiwu",
+"vqphpmqbsffdhinpyhjokpvdfdpatkabojmtkqfhlsfipjzef",
+"xliawnshybffuztvownrcqykejmihxahwdcqaikddevlzwcqw",
+"owecvbvllypastdicvkrlvrvqntciihzonbmwsqldscswlaea",
+"wsjllzyduqfxsmmgbhkvzxgeqepfncwdxfeqlruxjkepkyhwr",
+"mkyqfvdlyiyegrucstnftietocvpmmlppfbvtqpnunmkbczpc",
+"arjvlcsohphlbpeiwcetampvoxafpmmmmhqqehldohaumxtwg",
+"abeslvskhwxjbmybayesrigcregbomvqrllbqgmqqsgenswep",
+"jemkjdcypxawxxdbxvaspoxjgllsqfiioeowzqglvxvjlijnq",
+"yqckkwooglfgejzeamnxwevfgvhnkakktlfsyjcchpbmfhxrl",
+"dhfiikidodailoghjzswnhtdwjazcvllwkjaqgslpmceondaj",
+"yisodoofzqfmzjsmkxodxohzdmvtcuazcfejeywofyydjbhfe",
+"wfbjonqnbhzzmubksiiwsjvkritxvlaxoghevxwpgmtxqwhgh"]));
+// 99, NO
+
+
+console.log(gridChallenge([
+"zzzzzzzzzzzzzzzfzzzzzqzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzfzzzzzqzzzzz",
+"zzzzzzzzzzzzzzzzzzzzqzzzzzzzzfz",
+"zzzzzzzzzzzzzzzzzzzzzzzzzznzzzq",
+"zzzzzzzzzzzzzzzzzuzzzzzzzznzzzz",
+"zzzzzzzzzzzzuzzzzzzzzzzozzzzzzz",
+"zzzzzzzzzzzzzzzzzzuzzzzzzzztzzz",
+"zztzzzuzzzzzzzzzzzzzzzzzzzzzzzz",
+"zuzzztzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzztzzzzzzzzzzzzzzzzzzyzzz",
+"tzzzzzzzyzzzzzzzzzzzzzzzzzzzzzz",
+"zzzztzzzzzzzzzzzzzzzyzzzzzzzzzz",
+"zzztzzzzzzzzzzzzyzzzzzzzzzzzzzz",
+"tzzzzzzzzzzzzzzzzyzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzztzzzzzzzzyzz",
+"zzzzzzzzzzzzzzzztyzzzzzzzzzzzzz",
+"zzzyzzzzzzzzztzzzzzzzzzzzzzzzzz",
+"ztzzzyzzzzzzzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzyzzzzzzzzztzzzzzzz",
+"zzzzyzzzzzztzzzzzzzzzzzzzzzzzzz",
+"zzzzztzzzzzyzzzzzzzzzzzzzzzzzzz",
+"zzzzzzzztzzzzyzzzzzzzzzzzzzzzzz",
+"zzzzzzzzzztzzzzzzzzzzzzzyzzzzzz",
+"zzzzzzyzzzzzzzztzzzzzzzzzzzzzzz",
+"zzzzzzzzzzzzzztzzzzzzzzzzzzzzyz",
+"zzzzzzzzyzzzzzzzzzzyzzzzzzzzzzz",
+"zzzzzzzzzzzyzzzzzzzzzzzzzzzyzzz",
+"zzzzzzzzzzzzzzyzzzzzzzyzzzzzzzz",
+"zzzzzzzzzzzzzzzzzzzzzzyzyzzzzzz",
+"zyzzzzzzyzzzzzzzzzzzzzzzzzzzzzz",
+"yzzzzzzyzzzzzzzzzzzzzzzzzzzzzzz"]));
+// 22 is yes
+
+console.log(gridChallenge([
+"iv",
+"sm"]));
+// 21 is NO
+
