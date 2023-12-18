@@ -1,17 +1,10 @@
-// NOT EFFICIENT ENOUGH
+// STILL NOT FAST ENOUGH
 function saveThePrisoner(n, m, s) { // num. of prisoners, pieces of candy, chair # to start at.
-    let max = Math.max(n, m);
-    for (let i = s; i <= max; i++) {    
-        if (i > n) i = 1;
+    for (let i = s; i <= n; i = (i % n) + 1) {
         m--;
-
-        // if (m <= 0) break;
-        // console.log(i);
-        if (m <= 0) return i;
-        
-        
+        if (m == 0) return i;
     }
-};
+}   
 
 // console.log(saveThePrisoner(4, 6, 2));   // -> 2, 3, 4, 1, 2, 3....RETURN 3.
 
