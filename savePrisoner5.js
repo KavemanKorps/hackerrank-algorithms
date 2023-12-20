@@ -1,6 +1,5 @@
 function saveThePrisoner(dudes, candy, s) {
     let extend = s + candy - 1
-    
     if (extend > dudes) {
         let remaining = extend - dudes;
         while (remaining > dudes) {
