@@ -1,3 +1,4 @@
+// lol i really need to get back to work.
 function acmTeam(topic) {
     let max = 0;
     let goodTeams = 0;
