@@ -4,11 +4,9 @@ function flatlandSpaceStations(n, c) {
     let newArr = [...new Set(c)].sort((a, b) => a - b);
     let distances = [];
 
-    // what if I divide all distance values by 2 except 0 and last value?
     for (let i = 0; i < newArr.length - 1; i++) {
         distances.push(Math.abs(newArr[i + 1] - newArr[i]));
     }
-
     distances = distances.map((a, index) => (index === 0 || index === distances.length - 1) ? a : a / 2);
 
     let sucker = Math.max(...distances); 
@@ -18,7 +16,6 @@ function flatlandSpaceStations(n, c) {
     if (c.slice(1, c.length - 1).includes(0) && distances[0] == Math.max(...distances) && c.length - 2 > 1 
         && Math.max(...distances) > 1) return Math.floor(distances[0] / 2);
     return Math.floor(sucker);
-    // return sucker;
 };
 
 // flatlandSpaceStations(5, [0, 4]);            // -> 0, 1, 2, 1, 0.....2
