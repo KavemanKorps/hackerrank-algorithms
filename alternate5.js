@@ -1,24 +1,25 @@
 function alternate(s) {
     let set = [...new Set(s)];
 
-    // let newStr = s.split("");   // ['a', 'b', 'a', 'a', 'c', 'd', 'a', 'b', 'd']
-    let newStr = s;
+    let cutMakers = [];
 
     for (let i = 0; i < set.length; i++) {
         for (let u = i + 1; u < set.length; u++) {
+            let newStr = s.split("").filter(a => a == set[i] || a == set[u]).join("");
 
-            // (a, b), (a, c), (a, d)
+            console.log(set[i], set[u], newStr);
+
             for (let x = 0; x < newStr.length; x++) {
-                if (newStr[x] !== set[i] || newStr[x] !== set[u]) {
-                    newStr.replace(newStr, '');
-                    x--;
-                    // console.log(true);
-                }
+                // ab (length 2)
+                if (newStr[x] == newStr[x + 1]) break;
+                if (x == newStr.length - 1) cutMakers.push(newStr.length);
             }
         }
-        // console.log(newStr);
-        // let newStr = s;
     }
-    // console.log(newStr);
+    console.log(cutMakers);
+
+    // return cutMakers.length > 1 ? Math.max(...cutMakers) : 0;
 }
-alternate("abaacdabd"); 
+
+// console.log(alternate("ab"));
+alternate("ab");
