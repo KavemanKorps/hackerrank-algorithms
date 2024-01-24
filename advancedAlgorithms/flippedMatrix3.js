@@ -32,9 +32,8 @@ function flippedMatrix(matrix) {
     }
 
     let currentSum = 0;
-    for (let row = 0; row < arr.length; row++) {
-
-
+    // for (let row = 0; row < arr.length; row++) {
+    // }
 };
 
 // flippedMatrix([
@@ -52,3 +51,8 @@ flippedMatrix([
     [62, 98, 114, 108, 1],
     [62, 98, 114, 108, 1],
     ], 1);
+
+flippedMatrix([
+    [1, 2],
+    [3, 4]
+], 1);
