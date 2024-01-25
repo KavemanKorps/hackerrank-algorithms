@@ -1,3 +1,5 @@
+// DONE
+
 // does not specify what type to return. So, string.
 function extraLongFactorials(n) {
     let curr = BigInt(1);
