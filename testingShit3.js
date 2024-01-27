@@ -11,4 +11,8 @@ let result =
         // return elem == array[index + 1];
     });
 
-console.log(result);
+// console.log(result);
+
+for (let i = 0; i < 5; i++) {
+    console.log(i - 1);
+}
