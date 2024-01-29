@@ -6,6 +6,13 @@ function surfaceArray(A) {
         return arr.reduce((a, b) => a + b);
     }
 
+    // I UNDERSTAND: I am not checking the 1st and last rows for inners. 
+
+    // given a specific block (of any height), return its difference with either the block in front/back
+    function blockValue(block, otherBlock) {
+        return block - otherBlock > 0 ? block - otherBlock : 0;
+    }
+
     for (let row = 0; row < A.length; row++) {
         curr += A[row].length * 2;        // Bottom and Top
         curr += Math.max(...A[row]) * 2;  // the sides
@@ -13,31 +20,24 @@ function surfaceArray(A) {
         // starting off with "front" face:
         if (row - 1 == -1) curr += getSum(A[row]);
         else {
+            // iterate over each individual block:
             for (let block = 0; block < A.length; block++) {
                 let prev = A[row - 1][block];
                 let currBlock = A[row][block];
                 let next = row + 1 < A.length ? A[row + 1][block] : 0;
 
-                /* sum of current with previous block and the sum of current 
-                with next block. If sum is 0 or less, set it to zero. */
-                let sum1 = currBlock - prev > 0 ? currBlock - prev : 0; 
-                let sum2 = currBlock - next > 0 ? currBlock - next : 0;
+                // console.log([currBlock - prev > 0 ? currBlock - prev : 0, 
+                //     currBlock - next > 0 ? currBlock - next : 0]);
 
-                curr += sum1;
-                curr += sum2;
+                curr += blockValue(currBlock, prev);
+                curr += blockValue(currBlock, next);
             }
         }
+        console.log(curr);
     }
-    return curr;
+    // return curr;
 }
 
-// surfaceArray(
-//     [
-//         [2, 1, 2],
-//         [1, 1, 1],
-//         [1, 2, 1]
-//     ]
-// );
 
 console.log(surfaceArray(
     [[1, 3, 4],
@@ -45,3 +45,9 @@ console.log(surfaceArray(
      [1, 2, 4]
     ]
 ));       // should return 60.
+
+// console.log(surfaceArray(
+//     [
+//      [1, 2],
+//      [3, 2]
+//     ]));
