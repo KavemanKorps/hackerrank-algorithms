@@ -35,17 +35,18 @@ function surfaceArea(A) {
     return curr;
 }
 
-// console.log(surfaceArea(
-//     [
-//     [91, 80, 7, 41, 36, 11, 48, 57, 40, 43]
-//     ]
-// ));     // 1276. 23 extra ones being added (1299)
-
 console.log(surfaceArea(
     [
-    [2, 1, 3]
+    [91, 80, 7, 41, 36, 11, 48, 57, 40, 43]
     ]
 ));     // 1276. 23 extra ones being added (1299)
+
+// GOOD
+// console.log(surfaceArea(
+//     [
+//     [2, 1, 3]
+//     ]
+// ));     // 1276. 23 extra ones being added (1299)
 
 
 // console.log(surfaceArea(
