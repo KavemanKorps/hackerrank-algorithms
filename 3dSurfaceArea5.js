@@ -2,6 +2,8 @@
 function surfaceArea(A) {
     let curr = 0;
     for (let row = 0; row < A.length; row++) {
+        // NOW FOR TOP/BOTTOM:
+        curr += A[row].length * 2;        // Bottom and Top 
         for (let col = 0; col < A[row].length; col++) {
             let currBlock = A[row][col];
         
@@ -24,16 +26,10 @@ function surfaceArea(A) {
             for (let i of [left, right, up, down]) {
                 if (i >= 0) curr += i;
             }
-
-            // NOW FOR TOP/BOTTOM:
-            
         }
     }
 
     // NOW FOR TOP AND BOTTOM:
-
-
-
     return curr;
 }
 
@@ -43,15 +39,28 @@ console.log(surfaceArea(
      [3, 2]
     ]));        // 28
 
+console.log(surfaceArea(
+    [[91, 80, 7, 41, 36, 11, 48, 57, 40, 43]]  
+));         
+// 1276
+// inner total: 189
+
 // console.log(surfaceArea(
 //     [
 //         [1, 2],
 //         [3, 2]
 //     ]));        // 28
 
-// console.log(surfaceArea(
-//     [[3, 1, 2],
-//      [1, 1, 1],
-//      [1, 2, 1]
-//     ]
-// ));       // should return 47
+console.log(surfaceArea(
+    [[3, 1, 2],
+     [1, 1, 1],
+     [1, 2, 1]
+    ]
+));       // should return 47. Where did I get this from again?
+
+console.log(surfaceArea(
+    [[1, 3, 4],
+     [2, 2, 3],
+     [1, 2, 4]
+    ]
+));       // should return 60
