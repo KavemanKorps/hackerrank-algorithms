@@ -46,7 +46,7 @@ console.log(surfaceArea(
 //     [
 //     [2, 1, 3]
 //     ]
-// ));     // 1276. 23 extra ones being added (1299)
+// )); 
 
 
 // console.log(surfaceArea(
